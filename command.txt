@@ -1,0 +1,13 @@
+git init
+git remote add origin https://github.com/sureshsubudhi/kubernates-test.git
+git branch -M main
+git push -u origin main
+
+docker build -t "cluster-test:v1" .\Dockerfile     
+docker images 
+docker run -it -rm -p 8089:80 cluster-test:v1     
+
+kubectl get service
+kubectl get pod
+kubectl apply -f .\deployment.yml    
+kubectl apply -f .\service.yml     
